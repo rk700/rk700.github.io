@@ -5,7 +5,7 @@ layout: post
 categories:
   - writeup
 tags:
-  - mysql
+  - sql
   - wechall
 ---
 [http://www.wechall.net/challenge/Mawekl/are\_you\_blind/index.php][1]  

@@ -5,7 +5,7 @@ layout: post
 categories:
   - writeup
 tags:
-  - mysql
+  - sql
   - wechall
 ---
 <http://www.wechall.net/challenge/table_names/index.php>

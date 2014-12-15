@@ -3,8 +3,9 @@ title: Whitespace programming language
 author: rk700
 layout: post
 categories:
-  - article
+  - writeup
 tags:
+  - ksnctf
   - misc
 ---
 

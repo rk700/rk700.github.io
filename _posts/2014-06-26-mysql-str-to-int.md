@@ -5,7 +5,7 @@ layout: post
 categories:
   - article
 tags:
-  - mysql
+  - sql
 ---
 <http://www.freebuf.com/articles/web/6894.html>
 

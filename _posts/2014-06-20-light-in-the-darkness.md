@@ -5,7 +5,7 @@ layout: post
 categories:
   - writeup
 tags:
-  - mysql
+  - sql
   - wechall
 ---
 [http://www.wechall.net/challenge/Mawekl/light\_in\_the_darkness/index.php][1]  
