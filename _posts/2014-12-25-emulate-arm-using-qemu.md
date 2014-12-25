@@ -6,6 +6,7 @@ categories:
   - article
 tags:
   - linux
+  - ARM
 ---
 
 之前遇到ARM逆向的入门题，但没有环境只能静态分析，非常慢；而且我觉得边调试边学应该会快一些，于是决定模拟一个ARM环境装linux系统。
@@ -22,11 +23,11 @@ $ make install
 
 然后创建一个qcow2镜像文件，我分了10G
 
-<pre>$ qemu-img create -f qcow2 arm.img 10G</pre>
+<pre>$ qemu-img create -f qcow2 arm.qcow2 10G</pre>
 
 接下来就该在上面装系统了，[这里](https://gist.github.com/bdsatish/7476239)的指示写的很详细，用的是Debian 7。但启动还需要`vmlinux`和`initrd`，在[这里](http://ftp.debian.org/debian/dists/wheezy/main/installer-armhf/current/images/vexpress/netboot/)下载。运行：
 
-<pre>$ qemu-system-arm -m 1024M -sd arm.img -M vexpress-a9 -cpu cortex-a9 -kernel ../Downloads/vmlinuz-3.2.0-4-vexpress -initrd ../Downloads/initrd.gz -append "root=/dev/ram" -no-reboot</pre>
+<pre>$ qemu-system-arm -m 1024M -sd arm.qcow2 -M vexpress-a9 -cpu cortex-a9 -kernel ../Downloads/vmlinuz-3.2.0-4-vexpress -initrd ../Downloads/initrd.gz -append "root=/dev/ram" -no-reboot</pre>
 
 就进入到安装界面了，稍微有点慢，一个多小时安装完成。
 
@@ -34,7 +35,7 @@ $ make install
 
 <pre>
 $ modprobe nbd max_part=16
-$ qemu-nbd -c /dev/nbd0 arm.img
+$ qemu-nbd -c /dev/nbd0 arm.qcow2
 $ mount /dev/nbd0p1 /mnt
 $ cp /mnt/* ~
 $ umount /mnt
@@ -45,13 +46,13 @@ $ qemu-nbd -d /dev/nbd0
 
 有了提取出来的`vmlinuz-3.2.0-4-vexpress`和`initrd.img-3.2.0-4-vexpress`，终于可以启动了：
 
-<pre>$ qemu-system-arm -m 2048M -sd arch.img -M vexpress-a9 -cpu cortex-a9 -kernel vmlinuz-3.2.0-4-vexpress -initrd initrd.img-3.2.0-4-vexpress -append "root=/dev/mmcblk0p2"</pre>
+<pre>$ qemu-system-arm -m 1024M -sd arm.qcow2 -M vexpress-a9 -cpu cortex-a9 -kernel vmlinuz-3.2.0-4-vexpress -initrd initrd.img-3.2.0-4-vexpress -append "root=/dev/mmcblk0p2"</pre>
 
 这里用`mmcblk0p2`，是还是因为分区时`/`分在了第二个分区。
 
 以后还是用ssh连上去，也不需要显示窗口，所以用
 
-<pre>$ qemu-system-arm -m 1024M -sd arch.img -M vexpress-a9 -cpu cortex-a9 -kernel vmlinuz-3.2.0-4-vexpress -initrd initrd.img-3.2.0-4-vexpress -append "root=/dev/mmcblk0p2" -display none -redir tcp:33333::22 &</pre>
+<pre>$ qemu-system-arm -m 1024M -sd arm.qcow2 -M vexpress-a9 -cpu cortex-a9 -kernel vmlinuz-3.2.0-4-vexpress -initrd initrd.img-3.2.0-4-vexpress -append "root=/dev/mmcblk0p2" -display none -redir tcp:33333::22 &</pre>
 
 让本地的`33333`端口转到ssh。需要连上去时就用
 
