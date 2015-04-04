@@ -3,7 +3,7 @@ title: 0CTF writeup
 author: rk700
 layout: post
 categories:
-  - article
+  - writeup
 tags:
   - exploit
   - misc

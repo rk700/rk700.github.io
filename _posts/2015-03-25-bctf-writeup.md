@@ -3,7 +3,7 @@ title: BCTF writeup
 author: rk700
 layout: post
 categories:
-  - article
+  - writeup
 tags:
   - exploit
   - crypto
