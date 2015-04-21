@@ -1,0 +1,139 @@
+<style>body {
+font-size: 12px;
+background-color: #EBEBEB;
+font-family: "Lucida Console", Monaco, monospace;
+width: 55em;
+}
+p {
+margin: 0.8em 0 0 0.1em;
+}
+.block {
+float: left;
+padding: 0.5em 0;
+text-align: center;
+color: black;
+}
+.normal {
+
+-webkit-box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.80);
+-moz-box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.80);
+box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.80);
+
+}
+.empty + .empty {
+border-left: 1px solid gray;
+margin-left: -1px;
+}
+.empty {
+color: gray;
+}
+.line {  }.line:after {
+  content:"";
+  display:table;
+  clear:both;
+}.state {
+margin: 0.5em; padding: 0;
+
+background-color: white;
+
+border-radius: 0.3em;
+
+-webkit-box-shadow: inset 2px 2px 4px 0px rgba(0,0,0,0.80);
+-moz-box-shadow: inset 2px 2px 4px 0px rgba(0,0,0,0.80);
+box-shadow: inset 2px 2px 4px 0px rgba(0,0,0,0.80);
+
+padding: 0.5em;
+
+}.log {
+}.error {
+color: white;
+background-color: #8b1820;
+}.error .empty {
+color: white;
+}</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"></script><script>
+var scrollTimeout = null;
+$(window).scroll(function(){
+    if (scrollTimeout) clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(function(){
+    $('.log').stop();
+    $('.log').animate({
+        'margin-left': $(this).scrollLeft()
+    }, 100);
+    }, 200);
+});
+</script>
+<body>
+<div class="timeline">
+<div class="state ">
+<div class="line" style="">
+<div class="block normal" style="width: 10em; background-color: rgb(223, 108, 75);;"><strong>0x603008</strong><br />+ 0x1820 (0x1810)</div>
+</div>
+<div class="log"><p>malloc(0x1810) = 0x603010</p></div>
+</div>
+<div class="state ">
+<div class="line" style="">
+<div class="block normal" style="width: 10em; background-color: rgb(223, 108, 75);;"><strong>0x603008</strong><br />+ 0x1820 (0x1810)</div>
+<div class="block normal" style="width: 10em; background-color: rgb(144, 194, 150);;"><strong>0x604828</strong><br />+ 0x90 (0x80)</div>
+</div>
+<div class="log"><p>malloc(0x80) = 0x604830</p></div>
+</div>
+<div class="state ">
+<div class="line" style="">
+<div class="block normal" style="width: 10em; background-color: rgb(223, 108, 75);;"><strong>0x603008</strong><br />+ 0x1820 (0x1810)</div>
+<div class="block normal" style="width: 10em; background-color: rgb(144, 194, 150);;"><strong>0x604828</strong><br />+ 0x90 (0x80)</div>
+<div class="block normal" style="width: 10em; background-color: rgb(198, 216, 151);;"><strong>0x6048b8</strong><br />+ 0x90 (0x80)</div>
+</div>
+<div class="log"><p>malloc(0x80) = 0x6048c0</p></div>
+</div>
+<div class="state ">
+<div class="line" style="">
+<div class="block normal" style="width: 10em; background-color: rgb(223, 108, 75);;"><strong>0x603008</strong><br />+ 0x1820 (0x1810)</div>
+<div class="block normal" style="width: 10em; background-color: rgb(144, 194, 150);;"><strong>0x604828</strong><br />+ 0x90 (0x80)</div>
+<div class="block normal" style="width: 10em; background-color: rgb(198, 216, 151);;"><strong>0x6048b8</strong><br />+ 0x90 (0x80)</div>
+<div class="block normal" style="width: 10em; background-color: rgb(122, 190, 67);;"><strong>0x604948</strong><br />+ 0x90 (0x80)</div>
+</div>
+<div class="log"><p>malloc(0x80) = 0x604950</p></div>
+</div>
+<div class="state ">
+<div class="line" style="">
+<div class="block normal" style="width: 10em; background-color: rgb(223, 108, 75);;"><strong>0x603008</strong><br />+ 0x1820 (0x1810)</div>
+<div class="block normal" style="width: 10em; background-color: rgb(144, 194, 150);;"><strong>0x604828</strong><br />+ 0x90 (0x80)</div>
+<div class="block normal" style="width: 10em; background-color: rgb(198, 216, 151);;"><strong>0x6048b8</strong><br />+ 0x90 (0x80)</div>
+<div class="block normal" style="width: 10em; background-color: rgb(122, 190, 67);;"><strong>0x604948</strong><br />+ 0x90 (0x80)</div>
+<div class="block normal" style="width: 10em; background-color: rgb(144, 191, 146);;"><strong>0x6049d8</strong><br />+ 0x90 (0x80)</div>
+</div>
+<div class="log"><p>malloc(0x80) = 0x6049e0</p></div>
+</div>
+<div class="state ">
+<div class="line" style="">
+<div class="block normal" style="width: 10em; background-color: rgb(223, 108, 75);;"><strong>0x603008</strong><br />+ 0x1820 (0x1810)</div>
+<div class="block empty" style="width: 10em; ;"><strong>0x604828</strong><br />+ 0x90 </div>
+<div class="block normal" style="width: 10em; background-color: rgb(198, 216, 151);;"><strong>0x6048b8</strong><br />+ 0x90 (0x80)</div>
+<div class="block normal" style="width: 10em; background-color: rgb(122, 190, 67);;"><strong>0x604948</strong><br />+ 0x90 (0x80)</div>
+<div class="block normal" style="width: 10em; background-color: rgb(144, 191, 146);;"><strong>0x6049d8</strong><br />+ 0x90 (0x80)</div>
+</div>
+<div class="log"><p>free(0x604830) = 0x0</p></div>
+</div>
+<div class="state ">
+<div class="line" style="">
+<div class="block normal" style="width: 10em; background-color: rgb(223, 108, 75);;"><strong>0x603008</strong><br />+ 0x1820 (0x1810)</div>
+<div class="block empty" style="width: 10em; ;"><strong>0x604828</strong><br />+ 0x90 </div>
+<div class="block normal" style="width: 10em; background-color: rgb(198, 216, 151);;"><strong>0x6048b8</strong><br />+ 0x90 (0x80)</div>
+<div class="block empty" style="width: 10em; ;"><strong>0x604948</strong><br />+ 0x90 </div>
+<div class="block normal" style="width: 10em; background-color: rgb(144, 191, 146);;"><strong>0x6049d8</strong><br />+ 0x90 (0x80)</div>
+</div>
+<div class="log"><p>free(0x604950) = 0x0</p></div>
+</div>
+<div class="state ">
+<div class="line" style="">
+<div class="block normal" style="width: 10em; background-color: rgb(223, 108, 75);;"><strong>0x603008</strong><br />+ 0x1820 (0x1810)</div>
+<div class="block normal" style="width: 10em; background-color: rgb(209, 122, 171);;"><strong>0x604828</strong><br />+ 0x90 (0x80)</div>
+<div class="block normal" style="width: 10em; background-color: rgb(198, 216, 151);;"><strong>0x6048b8</strong><br />+ 0x90 (0x80)</div>
+<div class="block empty" style="width: 10em; ;"><strong>0x604948</strong><br />+ 0x90 </div>
+<div class="block normal" style="width: 10em; background-color: rgb(144, 191, 146);;"><strong>0x6049d8</strong><br />+ 0x90 (0x80)</div>
+</div>
+<div class="log"><p>malloc(0x80) = 0x604830</p></div>
+</div>
+</div>
+</body>
