@@ -9,6 +9,10 @@ tags:
   - exploit
 ---
 
+这道题目是关于heap overflow的。之前没有接触过这方面。通过阅读[http://winesap.logdown.com/posts/258859-0ctf-2015-freenode-write-up](http://winesap.logdown.com/posts/258859-0ctf-2015-freenode-write-up), [http://winesap.logdown.com/posts/258859-0ctf-2015-freenode-write-up](http://winesap.logdown.com/posts/258859-0ctf-2015-freenode-write-up)这两篇writeup，基本上明白了原理，在此记录。
+
+此外，关于glibc malloc的基本知识，可以参考[https://sploitfun.wordpress.com/2015/02/10/understanding-glibc-malloc/comment-page-1/](https://sploitfun.wordpress.com/2015/02/10/understanding-glibc-malloc/comment-page-1/)
+
 首先，创建4个大小为1的note（大小会被自动近似到128），内容为`"a"`
 
 {% highlight bash %}
