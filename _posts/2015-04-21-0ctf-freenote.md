@@ -5,7 +5,6 @@ layout: post
 categories:
   - writeup
 tags:
-  - linux
   - exploit
 ---
 
