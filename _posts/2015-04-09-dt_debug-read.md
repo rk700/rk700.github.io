@@ -172,3 +172,5 @@ Start              End                Perm      Name
 {% endhighlight %}
 
 由此，我们得到了ld-linux.so的地址。同样的道理，我们通过遍历link_map，就可以得到所有库的地址。当然，前提是二进制文件需要有`DT_DEBUG`。
+
+**Edit:** 最近研究才意识到，不一定需要从`DT_DEBUG`去获得`link_map`的地址。事实上，`.got.plt`的前3项，分别是`.dynamic`的地址，`link_map`的地址和`_dl_runtime_resolve`的地址。在解析函数地址时，`link_map`会被作为参数推到栈上传递给`_dl_runtime_resolve`。关于这一过程及利用方式，详情可见[http://rk700.github.io/article/2015/08/09/return-to-dl-resolve](http://rk700.github.io/article/2015/08/09/return-to-dl-resolve)
