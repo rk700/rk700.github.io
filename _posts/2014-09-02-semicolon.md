@@ -2,8 +2,6 @@
 title: 过滤了分号
 author: rk700
 layout: post
-categories:
-  - article
 tags:
   - XSS
 ---

@@ -2,8 +2,6 @@
 title: '+Ma&#8217;s reversing'
 author: rk700
 layout: post
-categories:
-  - writeup
 tags:
   - "+Ma's Reversing"
 ---

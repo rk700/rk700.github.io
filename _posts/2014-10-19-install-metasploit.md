@@ -2,8 +2,6 @@
 title: "安装metasploit"
 author: rk700
 layout: post
-categories:
-  - article
 tags:
   - linux
   - secTool

@@ -2,8 +2,6 @@
 title: PHP protocol的坑
 author: rk700
 layout: post
-categories:
-  - article
 tags:
   - PHP
 ---

@@ -2,8 +2,6 @@
 title: 0CTF freenote
 author: rk700
 layout: post
-categories:
-  - writeup
 tags:
   - exploit
 ---

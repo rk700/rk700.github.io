@@ -2,8 +2,6 @@
 title: build edb on x86
 author: rk700
 layout: post
-categories:
-  - article
 tags:
   - linux
   - secTool

@@ -2,8 +2,6 @@
 title: Table Names
 author: rk700
 layout: post
-categories:
-  - writeup
 tags:
   - sql
   - wechall

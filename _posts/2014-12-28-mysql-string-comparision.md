@@ -2,8 +2,6 @@
 title: mysql比较字符串忽略结尾的空白
 author: rk700
 layout: post
-categories:
-  - article
 tags:
   - sql
 ---

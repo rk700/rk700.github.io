@@ -2,8 +2,6 @@
 title: ISG决赛pepper
 author: rk700
 layout: post
-categories:
-  - writeup
 tags:
   - exploit
 ---

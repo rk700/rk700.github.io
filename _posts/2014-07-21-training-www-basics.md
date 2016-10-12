@@ -2,8 +2,6 @@
 title: 'Training: WWW-Basics'
 author: rk700
 layout: post
-categories:
-  - writeup
 tags:
   - wechall
   - HTTP

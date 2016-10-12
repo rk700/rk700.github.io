@@ -2,8 +2,6 @@
 title: Yourself PHP
 author: rk700
 layout: post
-categories:
-  - writeup
 tags:
   - PHP
   - wechall

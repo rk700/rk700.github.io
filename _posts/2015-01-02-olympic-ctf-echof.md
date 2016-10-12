@@ -2,8 +2,6 @@
 title: olympic ctf echof(PWN 300)
 author: rk700
 layout: post
-categories:
-  - writeup
 tags:
   - exploit
 ---

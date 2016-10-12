@@ -2,8 +2,6 @@
 title: mysql字符串转为整数
 author: rk700
 layout: post
-categories:
-  - article
 tags:
   - sql
 ---

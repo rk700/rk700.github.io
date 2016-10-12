@@ -2,8 +2,6 @@
 title: wireshark, burpsuite与SSL
 author: rk700
 layout: post
-categories:
-  - article
 tags:
   - network
   - crypto
@@ -53,15 +51,15 @@ tags:
 
 首先是ClientHello，会告诉server一些信息，比如client支持的cipher suites, compression method等等。
 
-![Clienthello]({{ site.url }}/assets/img/wireshark-burp-ssl/clientHello.png){:.myImage}
+![Clienthello]({{ site.url }}/img/in-posts/wireshark-burp-ssl/clientHello.png){:.myImage}
 
 server会选取可接受的cipher和compression，由ServerHello告诉client。而我抓到的包里，cipher用的是TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256，其中ECDHE的含义是elliptical curve Diffie-Hellman ephemeral。而这个cipher导致了我最终没能解开加密，后面会详细说。
 
-![ServerHello]({{ site.url }}/assets/img/wireshark-burp-ssl/serverHello.png){:.myImage}
+![ServerHello]({{ site.url }}/img/in-posts/wireshark-burp-ssl/serverHello.png){:.myImage}
 
 发送完ServerHello，server会把自己的证书发给client，由client检查是否可信。wireshark里可以看到证书具体每项的内容。
 
-![server的证书]({{ site.url }}/assets/img/wireshark-burp-ssl/serverCert.png){:.myImage}
+![server的证书]({{ site.url }}/img/in-posts/wireshark-burp-ssl/serverCert.png){:.myImage}
 
 此外，server也可以选择检查client的身份，通过发送CertificateRequest并检查client提供的证书。
 

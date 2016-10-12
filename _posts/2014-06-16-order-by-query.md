@@ -2,8 +2,6 @@
 title: Order By Query
 author: rk700
 layout: post
-categories:
-  - writeup
 tags:
   - sql
   - wechall

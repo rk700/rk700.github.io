@@ -2,8 +2,6 @@
 title: Quangcurrency
 author: rk700
 layout: post
-categories:
-  - writeup
 tags:
   - wechall
 ---

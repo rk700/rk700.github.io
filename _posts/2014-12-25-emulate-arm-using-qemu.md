@@ -2,8 +2,6 @@
 title: 用QEMU模拟ARM环境
 author: rk700
 layout: post
-categories:
-  - article
 tags:
   - linux
   - ARM

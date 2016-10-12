@@ -2,8 +2,6 @@
 title: 'Live LFI&#038;RFI'
 author: rk700
 layout: post
-categories:
-  - writeup
 tags:
   - PHP
   - wechall

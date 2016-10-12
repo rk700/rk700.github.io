@@ -2,8 +2,6 @@
 title: Brainfucked
 author: rk700
 layout: post
-categories:
-  - writeup
 tags:
   - javascript
   - wechall

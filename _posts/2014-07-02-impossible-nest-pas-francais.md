@@ -2,8 +2,6 @@
 title: 'Impossible n&#8217;est pas français'
 author: rk700
 layout: post
-categories:
-  - writeup
 tags:
   - wechall
 ---

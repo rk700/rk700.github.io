@@ -2,8 +2,6 @@
 title: webhacking.kr challenge 7
 author: rk700
 layout: post
-categories:
-  - writeup
 tags:
   - webhacking.kr
   - sql

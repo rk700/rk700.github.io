@@ -2,8 +2,6 @@
 title: Leviathan
 author: rk700
 layout: post
-categories:
-  - writeup
 tags:
   - OverTheWire
 ---

@@ -2,8 +2,6 @@
 title: 'Training: WWW-Rewrites'
 author: rk700
 layout: post
-categories:
-  - writeup
 tags:
   - wechall
   - HTTP

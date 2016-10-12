@@ -2,8 +2,6 @@
 title: webhacking.kr challenge 9
 author: rk700
 layout: post
-categories:
-  - writeup
 tags:
   - webhacking.kr
   - HTTP

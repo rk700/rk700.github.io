@@ -2,8 +2,6 @@
 title: 'Warchall: Live RCE'
 author: rk700
 layout: post
-categories:
-  - writeup
 tags:
   - PHP
   - wechall
