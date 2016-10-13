@@ -7,7 +7,7 @@ description: ""
 keyword: ""
 production_url : http://rk700.github.io
 
-permalink: /:categories/:year/:month/:day/:title
+permalink: /:year/:month/:day/:title
 
 # SNS settings
 RSS: true
