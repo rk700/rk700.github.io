@@ -37,7 +37,7 @@ disqus_username: rk700
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "信息安全爱好者&从业者"
+sidebar-about-description: "信息安全爱好者"
 sidebar-avatar: /img/avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
