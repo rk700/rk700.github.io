@@ -7,7 +7,7 @@ tags:
   - crypto
 ---
 
-DES(Data Encryption Standard)是一种对称加密算法。之前我仅对DES的基本使用方式有了解，但对具体的加解密细节没有深入研究。这里，便是阅读[NIST关于DES的标准文档](http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf)后，对DES加密细节的记录笔记。
+DES(Data Encryption Standard)是一种对称加密算法。之前我仅对DES的基本使用方式有了解，但对具体的加解密细节没有深入研究。这里，便是阅读相关资料后，对DES加密细节的记录笔记。
 
 ---
 
@@ -245,5 +245,48 @@ $$FP(R_{16}L_{16})$$
 ---
 
 ## 安全性
+
+自从DES加密算法被采取为标准之后，对DES安全性的分析和研究便一直在进行。而DES设计过程中NSA的参与，更是催生出了“DES算法中存在NSA的后门”这种论点。质疑者认为，过短的密钥长度，以及神器的sbox的选取，都有可能是NSA为了便于破解DES而故意设计的。
+
+#### sbox 
+
+抛开密钥长度不论，sbox是DES加密中非常重要的一环，其直接影响到了整个加密的安全性。这是因为sbox是加密过程中唯一的非线性部分。由于sbox的设计准则迟迟没有被公开，所以有些人怀疑sbox的设计上存在缺陷，可以被NSA利用来破解DES。
+
+事实上，一直到DES被公布后约20年，对sbox的设计的质疑才慢慢停歇。而这与微分密码分析(Differential cryptanalysis)的公开有关。这种破解方法，是由Eli Biham和Adi Shamir(RSA算法的发明者之一)在80年代晚期，才逐渐研究并公开的。于是，人们尝试将这种破解方法试用在70年代发明的DES上，却发现sbox的设计可以有效抵御Differential cryptanalysis。
+
+这难道是巧合？当然不是。时间到了1994，终于真相大白。曾经参与过DES设计的IBM研究人员，Don Coppersmith，发布了一篇论文[The Data Encryption Standard (DES) and its strength against attacks](http://www.research.ibm.com/journal/rd/383/coppersmith.pdf)。在这篇论文中，Coppersmith提到，在当时设计DES时，他们就已经知道了Differential cryptanalysis这种攻击方法。于是在设计sbox时，就考虑到了对其防御。
+
+那么，既然IBM，当然也有NSA，早在近20年前就知道了这种攻击方法，为什么不公开呢？这就值得回味了。根据Coppersmith那篇论文中的解释，Differential cryptanalysis是一种非常强大的攻击方法，对于许多加密方式都有效。一旦他们将其公开，就会对美帝的国家安全造成危害。当然，直到90年代被公开之前，Differential cryptanalysis应该就是NSA的”黑科技“了，不知道他们利用其破解了多少信息。
+
+同时，在Coppersmith的论文中，也第一次公开了sbox的一些设计准则。例如：sbox不能接近线性；只相差1位的输入，经过sbox变换后，相差至少2位，等等。详细内容可见Coppersmith的论文。
+
+#### 3DES
+
+仅仅56位的密钥长度，是DES另一个被人诟病的地方。为此，Triple Data Encryption Algorithm(TDES或3DES)被提出。3DES实际上是使用3个56位的密钥 $$K1$$, $$K2$$, $$K3$$，进行了3次DES。具体地，加密过程如下：
+
+$$C=E_{K3}\Big(D_{K2}\big(E_{K1}(P)\big)\Big)$$
+
+其中，$$P$$ 是输入的明文，$$C$$ 是输出的密文，$$E_{K}$$ 指用 $$K$$ 进行DES加密，$$D_K$$ 指用 $$K$$ 进行解密。
+
+知道了3DES的加密过程，那么解密便是其逆过程，具体如下：
+
+$$P=D_{K1}\Big(E_{K2}\big(D_{K3}(C)\big)\Big)$$
+
+而3DES用到的密钥 $$(K1, K2, K3)$$，可以有以下3种选择：
+
+- $$K1$$, $$K2$$, $$K3$$ 互相独立
+- $$K1$$ 和 $$K2$$ 互相独立，$$K3=K1$$
+- 3个密钥全部相同
+
+第一种选择中，虽然3个密钥是互相独立的，但由于[Meet-in-the-middle_attack](https://en.wikipedia.org/wiki/Meet-in-the-middle_attack)，其[有效安全性仅有112位](http://csrc.nist.gov/publications/nistpubs/800-57/sp800-57-Part1-revised2_Mar08-2007.pdf)。
+
+---
+
+**参考文献**
+
+- [http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf](http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf)
+- [http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf](http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf) 
+- [https://en.wikipedia.org/wiki/Data_Encryption_Standard](https://en.wikipedia.org/wiki/Data_Encryption_Standard)
+- [https://en.wikipedia.org/wiki/Triple_DES](https://en.wikipedia.org/wiki/Triple_DES)
 
 <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
