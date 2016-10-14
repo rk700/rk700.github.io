@@ -285,7 +285,7 @@ $$P=D_{K1}\Big(E_{K2}\big(D_{K3}(C)\big)\Big)$$
 **参考文献**
 
 - [http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf](http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf)
-- [http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf](http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf) 
+- [http://www.research.ibm.com/journal/rd/383/coppersmith.pdf](http://www.research.ibm.com/journal/rd/383/coppersmith.pdf) 
 - [https://en.wikipedia.org/wiki/Data_Encryption_Standard](https://en.wikipedia.org/wiki/Data_Encryption_Standard)
 - [https://en.wikipedia.org/wiki/Triple_DES](https://en.wikipedia.org/wiki/Triple_DES)
 
