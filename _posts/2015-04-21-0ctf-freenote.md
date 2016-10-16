@@ -159,7 +159,7 @@ gdb-peda$ x/4gx 0x604820
 通过[villoc](https://github.com/wapiflapi/villoc)，我们可以将刚才的过程用图片显示出来：
 
 {::nomarkdown}
-<iframe width="700px" height="700px" src=/assets/html/0ctf-freenote/1.html></iframe>
+<iframe width="100%" height="666px" src=/img/in-posts/0ctf-freenote/1.html></iframe>
 {:/nomarkdown}
 
 有了heap的地址，我们就可以创建一个伪chunk，这个chunk是已经free的，其`fd`和`bk`指向heap上的某处，具体地，`fd->bk=bk->fd=ptr`。这里我们先创建note0，其内容中包含我们构造的伪chunk；然后创建note1，内容是`/bin/sh`用来后面调用`system`；然后再创建note2，其内容中包含多个构造的chunk
