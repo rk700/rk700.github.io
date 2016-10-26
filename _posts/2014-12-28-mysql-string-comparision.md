@@ -2,6 +2,9 @@
 title: mysql比较字符串忽略结尾的空白
 author: rk700
 layout: post
+redirect_from: 
+  - /article/2014/12/28/mysql-string-comparision
+  - /article/2014/12/28/mysql-string-comparision/
 tags:
   - sql
 ---

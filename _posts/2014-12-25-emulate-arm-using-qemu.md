@@ -2,6 +2,9 @@
 title: 用QEMU模拟ARM环境
 author: rk700
 layout: post
+redirect_from: 
+  - /article/2014/12/25/emulate-arm-using-qemu
+  - /article/2014/12/25/emulate-arm-using-qemu/
 tags:
   - linux
   - ARM

@@ -2,6 +2,7 @@
 title: Whitespace programming language
 author: rk700
 layout: post
+redirect_from: /writeup/2014/12/12/whitespace-programming-language
 tags:
   - ksnctf
   - misc

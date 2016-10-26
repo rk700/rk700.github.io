@@ -2,6 +2,9 @@
 title: htmlspecialchars
 author: rk700
 layout: post
+redirect_from: 
+  - /writeup/2014/05/26/htmlspecialchars
+  - /writeup/2014/05/26/htmlspecialchars/
 tags:
   - wechall
   - XSS

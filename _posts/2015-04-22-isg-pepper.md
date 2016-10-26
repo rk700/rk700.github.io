@@ -2,6 +2,7 @@
 title: ISG决赛pepper
 author: rk700
 layout: post
+redirect_from: /writeup/2015/04/22/isg-pepper
 tags:
   - exploit
 ---

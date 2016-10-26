@@ -2,6 +2,7 @@
 title: ROP之return to dl-resolve
 author: rk700
 layout: post
+redirect_from: /article/2015/08/09/return-to-dl-resolve
 tags:
   - exploit
 ---

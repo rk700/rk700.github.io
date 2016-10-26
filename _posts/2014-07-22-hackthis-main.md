@@ -2,6 +2,7 @@
 title: HackThis!! main
 author: rk700
 layout: post
+redirect_from: /writeup/2014/07/22/hackthis-main
 tags:
   - HackThis
 ---

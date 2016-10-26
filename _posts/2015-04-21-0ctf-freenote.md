@@ -2,6 +2,7 @@
 title: 0CTF freenote
 author: rk700
 layout: post
+redirect_from: /writeup/2015/04/21/0ctf-freenote
 tags:
   - exploit
 ---

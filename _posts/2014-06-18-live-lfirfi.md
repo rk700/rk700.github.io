@@ -2,6 +2,9 @@
 title: 'Live LFI&#038;RFI'
 author: rk700
 layout: post
+redirect_from: 
+  - /writeup/2014/06/18/live-lfirfi
+  - /writeup/2014/06/18/live-lfirfi/
 tags:
   - PHP
   - wechall

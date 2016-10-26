@@ -2,6 +2,7 @@
 title: PHP protocol的坑
 author: rk700
 layout: post
+redirect_from: /article/2015/03/25/php-protocol-filter
 tags:
   - PHP
 ---

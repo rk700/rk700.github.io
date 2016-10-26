@@ -2,6 +2,7 @@
 title: Time to Reset
 author: rk700
 layout: post
+redirect_from: /writeup/2014/06/18/time-to-reset
 tags:
   - PHP
   - wechall

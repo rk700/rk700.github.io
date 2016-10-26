@@ -2,6 +2,9 @@
 title: save the world
 author: rk700
 layout: post
+redirect_from: 
+  - /writeup/2014/10/12/save-the-world
+  - /writeup/2014/10/12/save-the-world/
 tags:
   - crypto
   - wechall

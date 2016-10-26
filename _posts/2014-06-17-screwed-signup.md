@@ -2,6 +2,7 @@
 title: Screwed Signup
 author: rk700
 layout: post
+redirect_from: /writeup/2014/06/17/screwed-signup
 tags:
   - sql
   - wechall

@@ -2,6 +2,7 @@
 title: webhacking.kr challenge 10
 author: rk700
 layout: post
+redirect_from: /writeup/2014/12/24/sql-if-clause
 tags:
   - webhacking.kr
   - sql

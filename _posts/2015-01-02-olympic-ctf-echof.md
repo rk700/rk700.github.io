@@ -2,6 +2,7 @@
 title: olympic ctf echof(PWN 300)
 author: rk700
 layout: post
+redirect_from: /writeup/2015/01/02/olympic-ctf-echof
 tags:
   - exploit
 ---

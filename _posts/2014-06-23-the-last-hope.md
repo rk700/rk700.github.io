@@ -2,6 +2,9 @@
 title: The Last Hope
 author: rk700
 layout: post
+redirect_from: 
+  - /writeup/2014/06/23/the-last-hope
+  - /writeup/2014/06/23/the-last-hope/
 tags:
   - exploit
   - wechall

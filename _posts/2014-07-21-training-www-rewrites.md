@@ -2,6 +2,7 @@
 title: 'Training: WWW-Rewrites'
 author: rk700
 layout: post
+redirect_from: /writeup/2014/07/21/training-www-rewrites
 tags:
   - wechall
   - HTTP

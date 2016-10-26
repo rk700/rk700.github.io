@@ -2,6 +2,7 @@
 title: Quangcurrency
 author: rk700
 layout: post
+redirect_from: /writeup/2014/07/02/quangcurrency
 tags:
   - wechall
 ---

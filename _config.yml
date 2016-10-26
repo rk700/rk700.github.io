@@ -25,6 +25,7 @@ anchorjs: true                          # if you want to customize anchor. check
 gems:
     - jekyll-paginate
     - jekyll-sitemap
+    - jekyll-redirect-from
 
 # Markdown settings
 # replace redcarpet to kramdown,

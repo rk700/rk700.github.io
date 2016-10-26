@@ -2,6 +2,9 @@
 title: Can you read me
 author: rk700
 layout: post
+redirect_from: 
+  - /writeup/2014/06/23/can-you-read-me
+  - /writeup/2014/06/23/can-you-read-me/
 tags:
   - wechall
 ---

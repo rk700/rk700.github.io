@@ -2,6 +2,9 @@
 title: shellshock
 author: rk700
 layout: post
+redirect_from: 
+  - /writeup/2014/11/18/shellshock
+  - /writeup/2014/11/18/shellshock/
 tags:
   - linux
   - pwnable.kr

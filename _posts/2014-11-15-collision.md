@@ -2,6 +2,9 @@
 title: collision
 author: rk700
 layout: post
+redirect_from: 
+  - /writeup/2014/11/15/collision
+  - /writeup/2014/11/15/collision/
 tags:
   - linux
   - pwnable.kr

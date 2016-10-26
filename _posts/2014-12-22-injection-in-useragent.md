@@ -2,6 +2,7 @@
 title: webhacking.kr challenge 8
 author: rk700
 layout: post
+redirect_from: /writeup/2014/12/22/injection-in-useragent
 tags:
   - webhacking.kr
   - sql

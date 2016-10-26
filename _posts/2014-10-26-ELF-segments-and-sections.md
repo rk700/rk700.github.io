@@ -2,6 +2,7 @@
 title: ELF segments and sections
 author: rk700
 layout: post
+redirect_from: /article/2014/10/26/ELF-segments-and-sections
 tags:
   - linux
 ---

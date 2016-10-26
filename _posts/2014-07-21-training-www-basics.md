@@ -2,6 +2,7 @@
 title: 'Training: WWW-Basics'
 author: rk700
 layout: post
+redirect_from: /writeup/2014/07/21/training-www-basics
 tags:
   - wechall
   - HTTP

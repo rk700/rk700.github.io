@@ -2,6 +2,7 @@
 title: 通过DT_DEBUG来获得各个库的基址
 author: rk700
 layout: post
+redirect_from: /article/2015/04/09/dt_debug-read
 tags:
   - linux
   - exploit

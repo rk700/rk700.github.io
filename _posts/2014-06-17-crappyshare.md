@@ -2,6 +2,7 @@
 title: Crappyshare
 author: rk700
 layout: post
+redirect_from: /writeup/2014/06/17/crappyshare
 tags:
   - wechall
   - PHP

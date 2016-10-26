@@ -2,6 +2,7 @@
 title: stegano attachment
 author: rk700
 layout: post
+redirect_from: /writeup/2014/08/20/stegano-attachment-2
 tags:
   - wechall
 ---

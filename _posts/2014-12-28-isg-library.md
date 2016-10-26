@@ -2,6 +2,7 @@
 title: ISG初赛library
 author: rk700
 layout: post
+redirect_from: /writeup/2014/12/28/isg-library
 tags:
   - exploit
 ---

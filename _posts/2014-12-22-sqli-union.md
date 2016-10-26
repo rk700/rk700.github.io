@@ -2,6 +2,7 @@
 title: webhacking.kr challenge 7
 author: rk700
 layout: post
+redirect_from: /writeup/2014/12/22/sqli-union
 tags:
   - webhacking.kr
   - sql

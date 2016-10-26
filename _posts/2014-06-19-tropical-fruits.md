@@ -2,6 +2,9 @@
 title: Tropical Fruits
 author: rk700
 layout: post
+redirect_from: 
+  - /writeup/2014/06/19/tropical-fruits
+  - /writeup/2014/06/19/tropical-fruits/
 tags:
   - wechall
   - exploit

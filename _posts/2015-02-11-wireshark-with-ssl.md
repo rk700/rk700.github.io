@@ -2,6 +2,9 @@
 title: wireshark, burpsuite与SSL
 author: rk700
 layout: post
+redirect_from: 
+  - /article/2015/02/11/wireshark-with-ssl
+  - /article/2015/02/11/wireshark-with-ssl/
 tags:
   - network
   - crypto

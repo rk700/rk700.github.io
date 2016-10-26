@@ -2,6 +2,7 @@
 title: mysql字符串转为整数
 author: rk700
 layout: post
+redirect_from: /article/2014/06/26/mysql-str-to-int
 tags:
   - sql
 ---

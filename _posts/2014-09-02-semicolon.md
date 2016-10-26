@@ -2,6 +2,7 @@
 title: 过滤了分号
 author: rk700
 layout: post
+redirect_from: /article/2014/09/02/semicolon
 tags:
   - XSS
 ---

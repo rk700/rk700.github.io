@@ -2,6 +2,7 @@
 title: 'Training: GPG'
 author: rk700
 layout: post
+redirect_from: /writeup/2014/06/24/training-gpg
 tags:
   - wechall
   - crypto

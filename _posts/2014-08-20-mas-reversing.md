@@ -2,6 +2,9 @@
 title: '+Ma&#8217;s reversing'
 author: rk700
 layout: post
+redirect_from: 
+  - /writeup/2014/08/20/mas-reversing
+  - /writeup/2014/08/20/mas-reversing/
 tags:
   - "+Ma's Reversing"
 ---
