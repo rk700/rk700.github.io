@@ -139,6 +139,61 @@ DirtyCow漏洞在Android上的利用，便是修改`run-as`文件的内容，并
 
 ---
 
+## Android上的capabilities
+
+根据[官方说明](https://source.android.com/security/enhancements/enhancements43.html)，Android 4.3之后，便不再使用SUID/SGID，而是使用capabilities机制，以减少攻击面。
+
+但是，虽然Android源码中有包含库libcap-ng的代码，但并未编译相关代码。我们下载[libcap-ng](http://people.redhat.com/sgrubb/libcap-ng/libcap-ng-0.7.8.tar.gz)，并修改如下：
+
+{% highlight bash %}
+$ diff -u libcap-ng-0.7.8/src/cap-ng.c ~/src/libcap-ng-0.7.8/src/cap-ng.c
+--- libcap-ng-0.7.8/src/cap-ng.c        2016-10-27 10:09:12.000000000 +0800
++++ /Users/liuruikai756/src/libcap-ng-0.7.8/src/cap-ng.c        2016-07-24 23:47:34.000000000 +0800
+@@ -25,9 +25,7 @@
+ #include <string.h>
+ #include <stdarg.h>
+ #include <stdio.h>
+-#if !defined(ANDROID)
+ #include <stdio_ext.h>
+-#endif
+ #include <stdlib.h>
+ #include <sys/prctl.h>
+ #include <pwd.h>
+@@ -278,9 +276,7 @@
+        f = fopen(buf, "re");
+        if (f == NULL)
+                return -1;
+-#if !defined(ANDROID)
+        __fsetlocking(f, FSETLOCKING_BYCALLER);
+-#endif
+        while (fgets(buf, sizeof(buf), f)) {
+                if (strncmp(buf, "CapB", 4))
+                        continue;
+{% endhighlight %}
+
+随后，复制Android源码中的`external/libcap-ng/config.h`和`external/libcap-ng/Android.mk`。在`config.h`中需要定义`HAVE_SYS_XATTR_H`，并修改`Android.mk`以编译`filecap`。
+
+随后，运行命令`ndk-build`进行编译，并将相关文件push到设备：
+
+{% highlight bash %}
+$ ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=./Android.mk APP_PLATFORM=android-19
+$ adb -e push libs/x86/libcap-ng.so /system/lib/
+$ adb -e push libs/x86/filecap /data/local/tmp/
+{% endhighlight %}
+
+运行`/data/local/tmp/filecap`便可查看文件的capabilities了。
+
+例如，查看之前提到的文件`/system/bin/run-as`的capabilities如下：
+
+{% highlight bash %}
+root@generic_x86:/ # /data/local/tmp/filecap /system/bin
+p/filecap /system/bin/run-as                                                  <
+file                 capabilities
+/system/bin/run-as     setgid, setuid
+{% endhighlight %}
+
+---
+
 **参考文献**
 
 - [http://man7.org/linux/man-pages/man7/capabilities.7.html](http://man7.org/linux/man-pages/man7/capabilities.7.html)
