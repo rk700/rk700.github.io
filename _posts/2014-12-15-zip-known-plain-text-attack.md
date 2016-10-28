@@ -2,7 +2,9 @@
 title: 对加密的zip文件使用known plain text attack
 author: rk700
 layout: post
-redirect_from: /writeup/2014/12/15/zip-known-plain-text-attack
+redirect_from: 
+  - /writeup/2014/12/15/zip-known-plain-text-attack
+  - /writeup/2014/12/15/zip-known-plain-text-attack/
 tags:
   - ksnctf
   - misc
