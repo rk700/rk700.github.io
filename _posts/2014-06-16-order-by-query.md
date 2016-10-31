@@ -3,8 +3,8 @@ title: Order By Query
 author: rk700
 layout: post
 redirect_from: 
-  - /writeup/2014/05/26/host-me
-  - /writeup/2014/05/26/host-me/
+  - /writeup/2014/06/16/order-by-query
+  - /writeup/2014/06/16/order-by-query/
 tags:
   - sql
   - wechall
