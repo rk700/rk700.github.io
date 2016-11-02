@@ -2,6 +2,9 @@
 title: Light in the Darkness
 author: rk700
 layout: post
+redirect_from: 
+  - /writeup/2014/06/20/light-in-the-darkness
+  - /writeup/2014/06/20/light-in-the-darkness/
 tags:
   - sql
   - wechall

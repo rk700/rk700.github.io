@@ -2,6 +2,9 @@
 title: Are your blind
 author: rk700
 layout: post
+redirect_from: 
+  - /writeup/2014/06/20/are-your-blind
+  - /writeup/2014/06/20/are-your-blind/
 tags:
   - sql
   - wechall
