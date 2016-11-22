@@ -2,6 +2,9 @@
 title: Addslashes
 author: rk700
 layout: post
+redirect_from: 
+  - /writeup/2014/06/17/addslashes
+  - /writeup/2014/06/17/addslashes/
 tags:
   - sql
   - wechall

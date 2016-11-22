@@ -2,7 +2,9 @@
 title: 'Warchall: Live RCE'
 author: rk700
 layout: post
-redirect_from: /writeup/2014/07/03/warchall-live-rce
+redirect_from: 
+  - /writeup/2014/07/03/warchall-live-rce
+  - /writeup/2014/07/03/warchall-live-rce/
 tags:
   - PHP
   - wechall
