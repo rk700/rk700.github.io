@@ -2,7 +2,9 @@
 title: 0CTF rsa quine
 author: rk700
 layout: post
-redirect_from: /writeup/2015/04/03/0ctf-rsaquine
+redirect_from:
+  - /writeup/2015/04/03/0ctf-rsaquine
+  - /writeup/2015/04/03/0ctf-rsaquine/
 tags:
   - crypto
 ---

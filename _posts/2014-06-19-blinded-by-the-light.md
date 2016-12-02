@@ -2,6 +2,9 @@
 title: Blinded by the light
 author: rk700
 layout: post
+redirect_from:
+  - /writeup/2014/06/19/blinded-by-the-light
+  - /writeup/2014/06/19/blinded-by-the-light/
 tags:
   - sql
   - wechall
