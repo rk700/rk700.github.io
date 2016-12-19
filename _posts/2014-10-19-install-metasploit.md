@@ -3,8 +3,8 @@ title: "安装metasploit"
 author: rk700
 layout: post
 redirect_from: 
-  - /writeup/2014/10/19/install-metasploit
-  - /writeup/2014/10/19/install-metasploit/
+  - /article/2014/10/19/install-metasploit
+  - /article/2014/10/19/install-metasploit/
 tags:
   - linux
   - secTool

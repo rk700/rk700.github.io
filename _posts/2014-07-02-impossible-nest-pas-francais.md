@@ -2,7 +2,9 @@
 title: 'Impossible n&#8217;est pas français'
 author: rk700
 layout: post
-redirect_from: /writeup/2014/07/02/impossible-nest-pas-francais
+redirect_from:
+  - /writeup/2014/07/02/impossible-nest-pas-francais
+  - /writeup/2014/07/02/impossible-nest-pas-francais/
 tags:
   - wechall
 ---
