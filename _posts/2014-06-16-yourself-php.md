@@ -2,6 +2,9 @@
 title: Yourself PHP
 author: rk700
 layout: post
+redirect_from:
+  - /writeup/2014/06/16/yourself-php
+  - /writeup/2014/06/16/yourself-php/
 tags:
   - PHP
   - wechall

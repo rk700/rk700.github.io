@@ -233,6 +233,8 @@ output.kafka:
 
 上述各项的具体含义很明确，如果有疑问可以参考文档。
 
+---
+
 ## 配置logstash
 
 logstash支持从kafka获取input，也支持通过SASL进行认证，这里我们还是统一使用SASL/PLAIN。我们在目录`/etc/logstash/conf.d`下新建文件`test.conf`：
