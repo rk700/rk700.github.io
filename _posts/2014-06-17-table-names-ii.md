@@ -2,6 +2,9 @@
 title: Table Names II
 author: rk700
 layout: post
+redirect_from: 
+  - /writeup/2014/06/17/table-names-ii
+  - /writeup/2014/06/17/table-names-ii/
 tags:
   - sql
   - wechall

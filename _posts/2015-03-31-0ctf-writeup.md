@@ -2,7 +2,9 @@
 title: 0CTF writeup
 author: rk700
 layout: post
-redirect_from: /writeup/2015/03/31/0ctf-writeup
+redirect_from:
+  - /writeup/2015/03/31/0ctf-writeup
+  - /writeup/2015/03/31/0ctf-writeup/
 tags:
   - exploit
   - misc

@@ -2,6 +2,9 @@
 title: Leviathan
 author: rk700
 layout: post
+redirect_from: 
+  - /writeup/2014/07/06/leviathan
+  - /writeup/2014/07/06/leviathan/
 tags:
   - OverTheWire
 ---
