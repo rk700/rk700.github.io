@@ -96,3 +96,6 @@ if (backup[offset] == 0xe8) {
 我现在能想到的，就是在将origin的指令复制到backup时，进一步检查其是否存在类似于`__x86_get_pc_thunk_bx`这样的坑；如果存在，那么就需要对`ebx`加上相应的偏移量之后，再跳转回origin。
 
 在网上搜索后，似乎也没有找到有人遇到类似的问题。希望哪位大牛能够指点一下。
+
+
+__5月19日更新__: 按照上述思路，实现了一个基本的解决方案。具体地，在将指令复制到backup时，检查其是否存在`call`指令？如果存在，其目标方法是否是`__x86_get_pc_thunk_bx`或`__x86_get_pc_thunk_cx`？如果是，那么在后面再加上一条`sub ebx 0xXXXXXXXX`这样的指令，减去origin方法和backup方法之间的偏移量，从而修整相应的寄存器。具体代码可见[这里](https://github.com/rk700/VirtualHook/commit/70ecbe5b878595cefe0b2b742283f1a42ba075f1#diff-6a849b4a951a45abcae8451bb105af62R98)和[这里](https://github.com/rk700/VirtualHook/commit/70ecbe5b878595cefe0b2b742283f1a42ba075f1#diff-6a849b4a951a45abcae8451bb105af62R180)
