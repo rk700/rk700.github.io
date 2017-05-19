@@ -4,7 +4,7 @@ author: rk700
 layout: post
 catalog: true
 tags:
-  - exploit
+  - binary
 ---
 
 最近在研究Android原生代码hook时，遇到了一个麻烦。具体来说，就是在x86架构下，方法inline hook后，在执行原方法时可能会segfault。这里简要记录下，希望之后能够解决这个问题。
@@ -76,7 +76,9 @@ if (backup[offset] == 0xe8) {
 
 ## 我遇到的问题
 
-我所需要hook的目标，其起始几条指令正如上面列出的：
+我是在Android x86模拟器下，通过VirtualHoook的MSHook功能，对方法`__system_property_get`进行hook，从而修改应用所获取到的设备属性。但是，实际运行发现，一旦在hook方法中调用backup方法，就会出现内存异常访问。
+
+于是，通过调试和反编译，我找到了问题的原因。方法`__system_property_get`的起始几条指令正如上面列出的：
 
 {% highlight asm %}
 .text:0002ACC7                 push    ebx
@@ -85,9 +87,9 @@ if (backup[offset] == 0xe8) {
 .text:0002ACD0                 add     ebx, 0CDA4Ch
 {% endhighlight %}
 
-在进行inline hook时，由于前两条指令总长度只有4 bytes，达不到绝对跳转所需要的5 bytes，所以origin方法的前3条指令都被复制到了backup中。
+然而，在进行inline hook时，由于前两条指令总长度只有4 bytes，达不到绝对跳转所需要的5 bytes，所以origin方法的前3条指令都被复制到了backup中（当然，这里有将`call`替换为`jmp`的操作）。
 
-但是，在调用backup方法时，第3条指令`call    __x86_get_pc_thunk_bx`将`ebx`设置为backup所在代码的`pc`；随后，跳转回origin执行第4条指令。细心的读者一定发现了，此时通过`ebx`进行基于`pc`的相对偏移访问会出现错误。根本原因就是在backup方法中设置的`ebx`，并不是origin方法真正希望得到的值。
+但是，在调用backup方法时，第3条指令`call __x86_get_pc_thunk_bx`将`ebx`设置为backup所在代码的`pc`；随后，跳转回origin执行第4条指令。细心的读者一定发现了，此时通过`ebx`进行基于`pc`的相对偏移访问会出现错误。根本原因就是在backup方法中设置的`ebx`，并不是origin方法真正希望得到的值。
 
 ## 如何解决
 

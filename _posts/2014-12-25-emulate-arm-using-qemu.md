@@ -8,6 +8,7 @@ redirect_from:
 tags:
   - linux
   - ARM
+  - how-to
 ---
 
 之前遇到ARM逆向的入门题，但没有环境只能静态分析，非常慢；而且我觉得边调试边学应该会快一些，于是决定模拟一个ARM环境装linux系统。

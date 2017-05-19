@@ -5,6 +5,7 @@ layout: post
 catalog: true
 tags:
   - android
+  - binary
 ---
 
 在Android Dalvik时代，最流行的Hook框架非Xposed莫属了。各种功能强大的Xposed插件极大地丰富了Android的可玩性，而对于安全研究人员来说，hook则是应用逆向工作中的一项非常有效的手段。

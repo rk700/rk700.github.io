@@ -7,6 +7,7 @@ redirect_from:
   - /article/2014/10/26/ELF-segments-and-sections/
 tags:
   - linux
+  - binary
 ---
 
 有时候需要搞明白ELF文件里哪些部分是可写的，之前一直是稀里糊涂的，没有仔细去研究。今天稍微看了一下manpage，并动手试了下，大概明白了segments和sections之间的关系。

@@ -8,6 +8,7 @@ redirect_from:
 tags:
   - linux
   - exploit
+  - binary
 ---
 
 最近，在学习BCTF和0CTF的writeup时，注意到了一种通过`DT_DEBUG`来获得库的基址的方式：BCTF里的pattern用这一方法来获得ld-linux.so的地址，0CTF里的sandbox用这一方法来获得sandbox.so的基址。之前面对ASLR，我只知道可以通过GOT来获取libc.so的地址，而其他库的地址还不清楚应该怎样取得。于是，我稍微研究了下，在此记录。

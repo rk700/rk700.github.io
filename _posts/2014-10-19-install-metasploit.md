@@ -8,6 +8,7 @@ redirect_from:
 tags:
   - linux
   - secTool
+  - how-to
 ---
 首先是ruby1.9，因为版本低，所以从aur里装的。为了方便起见，把PKGBUILD里面涉及到的后缀1.9全部去掉，方便。再给gemrc文件里加上 
 `gem: --no-ri --no-rdoc` 
