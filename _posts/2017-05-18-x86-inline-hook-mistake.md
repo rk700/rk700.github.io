@@ -101,13 +101,3 @@ if (backup[offset] == 0xe8) {
 
 
 __5月19日更新__: 按照上述思路，实现了一个基本的解决方案。具体地，在将指令复制到backup时，检查其是否存在`call`指令？如果存在，其目标方法是否是`__x86_get_pc_thunk_bx`或`__x86_get_pc_thunk_cx`？如果是，那么在后面再加上一条`sub ebx 0xXXXXXXXX`这样的指令，减去origin方法和backup方法之间的偏移量，从而修整相应的寄存器。具体代码可见[这里](https://github.com/rk700/VirtualHook/commit/70ecbe5b878595cefe0b2b742283f1a42ba075f1#diff-6a849b4a951a45abcae8451bb105af62R98)和[这里](https://github.com/rk700/VirtualHook/commit/70ecbe5b878595cefe0b2b742283f1a42ba075f1#diff-6a849b4a951a45abcae8451bb105af62R180)
-
-__5月19日更新2__: 其实ARM架构下做方法inline hook也可能出现这类问题。当目标函数所在的ELF是PIC(Position Independent Code)时，为了访问`.got`，就需要通过`adr`指令进行相对于`pc`的内存访问(pc-relative addressing)。例如：
-
-{% highlight asm %}
-.plt:0000FA68 j___system_property_find 
-.plt:0000FA68                 ADRL            R12, 0x56A70
-.plt:0000FA70                 LDR             PC, [R12,#(__system_property_find_ptr - 0x56A70)]! ; __system_property_find
-{% endhighlight %}
-
-不过，一般来说ARM架构下inline hook造成backup方法调用失败的情况要少。因为一般的方法prolog部分已经足够用于跳转到hook方法了，所以复制到backup中的指令，基本上只有这些prolog，故不会带来副作用。
