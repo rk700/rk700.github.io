@@ -5,6 +5,7 @@ layout: post
 catalog: true
 tags:
   - binary
+  - fuzzing
 ---
 
 [上一篇文章](https://rk700.github.io/2017/12/28/afl-internals/)主要对AFL的一些实现细节进行了分析，但正如文章最后所说，还有很多细节讲到。所以我又另外写了这篇文章，专门介绍AFL是如何对输入文件进行变异的。

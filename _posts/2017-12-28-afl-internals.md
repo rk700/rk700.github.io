@@ -5,6 +5,7 @@ layout: post
 catalog: true
 tags:
   - binary
+  - fuzzing
 ---
 
 AFL(American Fuzzy Lop)是一款开源的fuzzing工具。最近我对其代码进行了简要的阅读，大致总结了一些AFL的实现细节，在此记录整理。
