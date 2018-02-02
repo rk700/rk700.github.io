@@ -42,7 +42,7 @@ tags:
 
 使用effMap指导havoc的另一个好处是，无需消耗大量计算资源，可以直接将deterministic阶段生成的effMap利用起来。相比之下，前一种通过概率选择的方式，还需要记录相关的次数、计算概率、排序，而这些额外的开销对于整体的fuzz效率还是有较大影响。
 
-## 扩大effBytes的范围
+## 减小effBytes的范围
 
 AFL原始的effBytes的判断方式，是检查翻转byte之后执行路径有没有发生变化。然而，在使用`objdump -x`对ELF文件试验时，我们发现几乎全部的bytes都是effBytes。那么这时上面的改进就没有什么意义了。
 
