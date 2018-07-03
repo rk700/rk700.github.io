@@ -116,3 +116,5 @@ tags:
 ## 总结
 
 Android N带来的变化还是很多的，除了上面提到的，还有更激进的代码优化策略，这些都对hook的稳定性造成影响，特别通过是native方式进行hook，如Xposed, AndFix, Legend，以及YAHFA。所以，YAHFA目前对于Android N的支持可能还有不完善的地方，坑肯定会有很多，需要继续分析研究。
+
+**EDIT:** 发现可以为`ArtMethod`设置`kAccCompileDontBother`这个flag，这样的作用是告诉系统，不要去JIT编译这个方法，从而一劳永逸的解决了上面提到的问题，不需要再通过trampoline中每次调用时清空`hotness_count_`了。
