@@ -39,4 +39,4 @@ $$x(e-1)=k(p-1)$$
 
 上述的就是如何求$$\hat{m}$$。同样的道理我们可以求出所有的$$\bar{m}$$。两两组合，每一对使用中国剩余定理，就得到了满足题意的$$m$$。
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
